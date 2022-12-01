@@ -8,7 +8,7 @@ from telethon.tl.functions.messages import GetHistoryRequest
 import asyncio
 import uuid
 
-SESSIONS_DIR = "sessions"
+SESSIONS_DIR = "conf/sessions"
 
 
 class Client:
