@@ -7,7 +7,7 @@
   src="https://telegram.org/img/t_logo.svg?1"
   align="left"
 />
-<h3>Python client-bot for copying content from telegram channels, chats and private messages to their channels.</h3>
+<h3>Python client-bot for copying content from telegram channels, chats and private messages to their channels. It works even if the telegram chanel have "Restrict Saving Content" flag on</h3>
 </div>
 <br/>
 <br/>
