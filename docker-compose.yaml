@@ -1,0 +1,8 @@
+version: "3.9"
+services:
+  tg_re_sender:
+    build: .
+    image: "madartem/telegramresender:latest"
+    volumes:
+      - "./conf:/app/conf"
+    restart: always

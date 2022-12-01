@@ -17,12 +17,12 @@
 
 * You need [Python](https://www.python.org/) >= 3.7
 * `# pip install -r requirements.txt`
-* Rename `config.json.example` to `config.json`
+* Rename `conf/config.json.example` to `conf/config.json`
 * `$ python main.py`
 
 ## Configuration
 
-Before the first run, you need to configure the program using the `config.json` file.
+Before the first run, you need to configure the program using the `conf/config.json` file.
 
 * `account_phone` - Your phone number from your telegram account.<br/>
 
@@ -36,5 +36,25 @@ Before the first run, you need to configure the program using the `config.json` 
   
 <h3>You can also configure the bot from the telegram, for more information send a message `~!help` in favorites while the bot is running</h3>
 
+
+## Using Docker
+
+Download docker-compose.yaml and place it in folder where you would like.
+Docker compose attaching the mount with temp database and config.js file.
+
+Crete sub folder near downloaded docker-compose.yaml and name it `conf`.
+Then fulfill `config.json` file like it described above and place it inside `conf` folder.
+
+You can simply start by docker-compose. Fist start will handle authenticate:
+```
+docker-compose up
+```
+
+If you are not authenticated you should enter the code from telegram.
+
+In the next time you can start without attaching console, because in volume mounted you have stored authentication:
+```
+docker-compose up -d
+```
 
 Project is based on another [project](https://github.com/deFiss/telegram_channel_duplicator) that duplicates messages form tg.
