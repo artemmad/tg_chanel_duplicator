@@ -1,3 +1,5 @@
+import logging
+
 from telethon import TelegramClient, events
 import os
 from loguru import logger
@@ -99,11 +101,23 @@ class Client:
 
                             print(msg)
 
-                            # filename = os.getcwd()+"/tmp/" + str(uuid.uuid4())
-                            # filename = await self.client.download_media(msg.media, filename)
-                            # print(filename)
+
                             msg.message = "Reposted from group: " + group["name"] + "\n" + " -------------\n" + msg.message
-                            await self.client.send_message(output_channel, msg)
+                            try:
+                                await self.client.send_message(output_channel, msg)
+                            except:
+                                logger.debug("Classic resending not worked. Will try download media and send")
+                                filename = os.getcwd()+"/tmp/" + str(uuid.uuid4())
+                                filename = await self.client.download_media(msg.media, filename)
+                                logging.debug(f"Downloaded file from {msg.id} like {filename}")
+                                if filename:
+                                    await self.client.send_file(output_channel, filename, caption=msg.message)
+                                    logger.debug(f"File have been sent. Trying to delete file {filename}")
+                                    os.remove(filename)
+                                else:
+                                    logger.debug(f"No media to send, will send plain text for message {msg.id}")
+                                    await self.client.send_message(output_channel, msg.message)
+
 
             utc = pytz.timezone("UTC")
             self.last_message_check = datetime.datetime.now(tz=utc)
