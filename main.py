@@ -22,7 +22,7 @@ async def main():
         rotation="3mb",
         compression="zip",
     )
-    logger.info(colorama.Fore.LIGHTYELLOW_EX + "Created by https://github.com/deFiss")
+    logger.info(colorama.Fore.LIGHTYELLOW_EX + "Created by https://github.com/artemmad")
 
     client = Client()
     await client.start()
