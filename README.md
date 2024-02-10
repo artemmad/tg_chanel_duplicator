@@ -45,14 +45,54 @@ Docker compose attaching the mount with temp database and config.js file.
 Crete sub folder near downloaded docker-compose.yaml and name it `conf`.
 Then fulfill `config.json` file like it described above and place it inside `conf` folder.
 
-You can simply start by docker-compose. Fist start will handle authenticate:
+``cd`` to dirrectory with placed docker-compose file and run:
+
+```bash
+docker run --rm -it -v ${PWD}/conf:/app/conf --entrypoint /bin/sh madartem/telegramresender:latest
+```
+
+Then run inside sh inside container such comand:
+```bash
+python3 main.py
+```
+
+You will be promted to authentication dialog where you should place your code sended to you via telegram to provide authentication for telegram client. Your promt inside container would look like this:
+```bash
+# python3 main.py
+2024-02-10T10:29:02.440556+0000 | INFO - Created by https://github.com/artemmad
+2024-02-10T10:29:02.491128+0000 | INFO - Account authorization
+Enter the code from the Telegram message: 81172
+Signed in successfully as <YOUR TELEGRAM NAME WOULD BE HERE>
+2024-02-10T10:29:11.346715+0000 | INFO - Account authorization was successful
+2024-02-10T10:29:11.347315+0000 | DEBUG - cycle
+```
+
+Then exit container sh using exit command:
+```bash
+exit
+```
+In the next time you can start without attaching console, because in volume mounted you have stored authentication.
+
+Now you can simply start by docker-compose:
 ```
 docker-compose up
 ```
 
-If you are not authenticated you should enter the code from telegram.
+If all is ok and in container logs you have such lines you successfully installed solution:
+```bash
+docker-compose up
+Creating network "telegram_channel_duplicator_default" with the default driver
+Creating telegram_channel_duplicator_tg_re_sender_1 ... done
+Attaching to telegram_channel_duplicator_tg_re_sender_1
+tg_re_sender_1  | 2024-02-10T10:39:58.738940+0000 | INFO - Created by https://github.com/artemmad
+tg_re_sender_1  | 2024-02-10T10:39:58.741724+0000 | INFO - Account authorization
+tg_re_sender_1  | 2024-02-10T10:39:59.060881+0000 | INFO - Account authorization was successful
+tg_re_sender_1  | 2024-02-10T10:39:59.061433+0000 | DEBUG - cycle
 
-In the next time you can start without attaching console, because in volume mounted you have stored authentication:
+``` 
+
+In next time you can use:
+
 ```
 docker-compose up -d
 ```
