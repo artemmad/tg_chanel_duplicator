@@ -3,12 +3,12 @@ import logging
 from telethon import TelegramClient, events
 import os
 from loguru import logger
-from .config_controller import ConfigController
 import pytz
 import datetime
 from telethon.tl.functions.messages import GetHistoryRequest
 import asyncio
 import uuid
+from telegram_channel_duplicator.config_controller import ConfigController
 
 SESSIONS_DIR = "conf/sessions"
 

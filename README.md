@@ -15,7 +15,7 @@
 
 ## Installation
 
-* You need [Python](https://www.python.org/) >= 3.7
+* You need [Python](https://www.python.org/) >= 3.12.6
 * `# pip install -r requirements.txt`
 * Rename `conf/config.json.example` to `conf/config.json`
 * `$ python main.py`
