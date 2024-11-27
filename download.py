@@ -78,8 +78,9 @@ class MessageDownloader:
         """
         try:
             logger.info(f"Processing message URL: {message_url}")
+            message_url = message_url.replace("https://t.me/c/","")
             parts = message_url.split("/")
-            chat_id = int(parts[-2].replace("c/", ""))
+            chat_id = int(parts[0].replace("c/", ""))
             message_id = int(parts[-1])
 
             # Получаем данные о чате

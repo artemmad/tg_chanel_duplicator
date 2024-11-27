@@ -4,3 +4,4 @@ venv/
 __pycache__/
 sessions/
 conf/config.json
+downloads/*
