@@ -97,4 +97,27 @@ In next time you can use:
 docker-compose up -d
 ```
 
+
+# Dump one message by telegram message reference
+
+Downloading supports only refs with such synthax ``https://t.me/c/<chat_id>/<message_id>``, example ``https://t.me/c/12345/11``.
+
+You can run the solution locally or using docker to dump one message with all media attached to it. Downloading will work only 
+if you bootstrap the solution succesfully and in ``conf/session`` folder exist valid and not expired session.
+
+```bash
+
+python3 download.py
+2024-11-27T17:17:38.447285+0400 | INFO - Authorization successful
+Enter the message link: 
+https://t.me/c/xxxx/xxxx
+2024-11-27T17:17:41.774873+0400 | INFO - Processing message URL: https://t.me/c/xxxx/xxx
+2024-11-27T17:17:42.060434+0400 | INFO - Message text saved to downloads/message_xxx/message.txt
+2024-11-27T17:20:01.460199+0400 | INFO - Media saved to downloads/message_xxx/be770dad-41a3-4a04-b8a1-0101f2f3df08.mp4
+
+Process finished with exit code 0
+```
+
+The downloads could be found in ``/download/message_<message_id>`` folder
+
 Project is based on another [project](https://github.com/deFiss/telegram_channel_duplicator) that duplicates messages form tg.

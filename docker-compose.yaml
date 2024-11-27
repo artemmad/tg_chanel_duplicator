@@ -5,4 +5,5 @@ services:
     image: "madartem/telegramresender:latest"
     volumes:
       - "./conf:/app/conf"
+      - "./downloads:/app/downloads"
     restart: always

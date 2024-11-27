@@ -1,5 +1,9 @@
 ./conf/sessions
+./conf/config.json
 ./logs
 ./venv
 ./Dockerfile
 ./README.md
+./downloads
+./dockerBuildAndPush.sh
+./dockerBuildAndPush.bat
