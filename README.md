@@ -15,7 +15,7 @@
 
 ## Installation
 
-* You need [Python](https://www.python.org/) >= 3.12.6
+* You need [Python](https://www.python.org/) >= 3.13.3
 * `# pip install -r requirements.txt`
 * Rename `conf/config.json.example` to `conf/config.json`
 * `$ python main.py`
@@ -116,6 +116,12 @@ https://t.me/c/xxxx/xxxx
 2024-11-27T17:20:01.460199+0400 | INFO - Media saved to downloads/message_xxx/be770dad-41a3-4a04-b8a1-0101f2f3df08.mp4
 
 Process finished with exit code 0
+```
+
+Or you can simply provide link to telegram message by passing it to donwloader.py:
+
+```bash
+python3 download.py https://t.me/c/12345/11
 ```
 
 The downloads could be found in ``/download/message_<message_id>`` folder

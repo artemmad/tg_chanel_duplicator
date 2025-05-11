@@ -148,8 +148,14 @@ async def main():
     downloader = MessageDownloader()
     await downloader.start()
 
-    # Ввод ссылки на сообщение
-    message_url = input("Enter the message link: ")
+    # Проверка аргументов командной строки
+    if len(sys.argv) > 1:
+        message_url = sys.argv[1]
+        logger.info(f"Using message URL from arguments: {message_url}")
+    else:
+        # Ввод ссылки на сообщение
+        message_url = input("Enter the message link: ")
+        
     await downloader.download_message(message_url)
 
     await downloader.client.disconnect()
